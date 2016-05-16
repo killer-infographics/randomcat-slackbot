@@ -42,7 +42,6 @@ controller.on('direct_message', function(bot, message) {
       console.log("Here is your random cat gif meow: " + catGif + "!");
     } else {
       console.log(error);
-      console.log('shit');
     }
   });
 });
@@ -54,7 +53,7 @@ controller.on('direct_mention,mention', function(bot, message) {
 
 // post the gif once a day
 var j = schedule.scheduleJob('1 1 15 * * 1-5', function() {
-  console.log('node-schedule ran');
+  console.log('node-schedule activated');
   request('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats', function(error, response, body) {
     if (!error && response.statusCode == 200) {
       // parse response and store image url

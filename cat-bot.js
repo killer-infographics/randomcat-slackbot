@@ -6,10 +6,10 @@ var Botkit = require('botkit'),
 // var scriptDir = __dirname; // current directory of node app
 
 // check if token var is present in run command
-if (!process.env.token) {
-  console.log('Error: Specify token in environment');
-  process.exit(1);
-}
+// if (!process.env.token) {
+//   console.log('Error: Specify token in environment');
+//   process.exit(1);
+// }
 
 var controller = Botkit.slackbot({
   debug: false
@@ -17,7 +17,7 @@ var controller = Botkit.slackbot({
 
 // connect the bot to a stream of messages
 var bot = controller.spawn({
-  token: process.env.token,
+  token: process.env.SLACK_TOKEN,
   incoming_webhook: {
     url: 'https://hooks.slack.com/services/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'
   }

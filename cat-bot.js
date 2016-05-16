@@ -12,22 +12,25 @@ var Botkit = require('botkit'),
 // }
 
 var controller = Botkit.slackbot({
-  debug: false
+  debug: true
+});
+var beepboop =  beepboop.start(controller, {
+  debug: true
 });
 
 // connect the bot to a stream of messages
-var bot = controller.spawn({
-  token: process.env.SLACK_TOKEN,
-  incoming_webhook: {
-    url: 'https://hooks.slack.com/services/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'
-  }
-});
+// var bot = controller.spawn({
+//   token: process.env.SLACK_TOKEN,
+//   incoming_webhook: {
+//     url: 'https://hooks.slack.com/services/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'
+//   }
+// });
 
-bot.startRTM(function(err, bot, payload) {
-  if (err) {
-    throw new Error('Could not connect to Slack');
-  }
-});
+// bot.startRTM(function(err, bot, payload) {
+//   if (err) {
+//     throw new Error('Could not connect to Slack');
+//   }
+// });
 
 // respond with a gif when users dm bot
 controller.on('direct_message', function(bot, message) {

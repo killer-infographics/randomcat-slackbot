@@ -15,9 +15,7 @@ var Botkit = require('botkit'),
 var controller = Botkit.slackbot({
   debug: true
 });
-var beepboop = beepboop.start(controller, {
-  debug: true
-});
+var beepboop = BeepBoop.start(controller);
 
 // connect the bot to a stream of messages
 // var bot = controller.spawn({

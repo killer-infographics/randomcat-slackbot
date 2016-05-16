@@ -1,7 +1,8 @@
 var Botkit = require('botkit'),
-  fs = require('fs'),
-  schedule = require('node-schedule'),
-  request = require('request');
+  var BeepBoop = require('beepboop-botkit'),
+    fs = require('fs'),
+    schedule = require('node-schedule'),
+    request = require('request');
 
 // var scriptDir = __dirname; // current directory of node app
 
@@ -14,7 +15,7 @@ var Botkit = require('botkit'),
 var controller = Botkit.slackbot({
   debug: true
 });
-var beepboop =  beepboop.start(controller, {
+var beepboop = beepboop.start(controller, {
   debug: true
 });
 

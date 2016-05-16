@@ -1,5 +1,5 @@
 var Botkit = require('botkit'),
-  var BeepBoop = require('beepboop-botkit'),
+    BeepBoop = require('beepboop-botkit'),
     fs = require('fs'),
     schedule = require('node-schedule'),
     request = require('request');

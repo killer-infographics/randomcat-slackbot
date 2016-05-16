@@ -5,7 +5,7 @@
   "description": "Slack bot for posting random cat gifs",
   "author": "Robert Borrego <robert@killerinfographics.com>",
   "scripts": {
-    "start": "token=" + SLACK_TOKEN + " node cat-bot.js"
+    "start": "node cat-bot.js"
   },
   "dependencies": {
     "botkit": "latest",

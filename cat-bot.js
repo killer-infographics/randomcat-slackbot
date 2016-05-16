@@ -4,32 +4,8 @@ var Botkit = require('botkit'),
     schedule = require('node-schedule'),
     request = require('request');
 
-// var scriptDir = __dirname; // current directory of node app
-
-// check if token var is present in run command
-// if (!process.env.token) {
-//   console.log('Error: Specify token in environment');
-//   process.exit(1);
-// }
-
-var controller = Botkit.slackbot({
-  debug: true
-});
+var controller = Botkit.slackbot();
 var beepboop = BeepBoop.start(controller);
-
-// connect the bot to a stream of messages
-// var bot = controller.spawn({
-//   token: process.env.SLACK_TOKEN,
-//   incoming_webhook: {
-//     url: 'https://hooks.slack.com/services/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'
-//   }
-// });
-
-// bot.startRTM(function(err, bot, payload) {
-//   if (err) {
-//     throw new Error('Could not connect to Slack');
-//   }
-// });
 
 // respond with a gif when users dm bot
 controller.on('direct_message', function(bot, message) {

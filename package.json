@@ -1,0 +1,15 @@
+{
+  "name": "random-cat",
+  "version": "1.0.0",
+  "main": "cat-bot.js",
+  "description": "Slack bot for posting random cat gifs",
+  "author": "Robert Borrego <robert@killerinfographics.com>",
+  "scripts": {
+    "start": "token=" + SLACK_TOKEN + " node cat-bot.js"
+  },
+  "dependencies": {
+    "botkit": "latest",
+    "node-schedule": "latest",
+    "request": "latest"
+  }
+}

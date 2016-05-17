@@ -1,3 +1,7 @@
 name: Random Cat 
 description: A Slack bot that posts a random cat gif from Giphy once a day
 avatar: images/avatar.png
+slackscopes:
+  - bot
+  - commands
+  - incoming-webhook

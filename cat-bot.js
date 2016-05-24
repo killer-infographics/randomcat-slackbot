@@ -1,8 +1,8 @@
 var Botkit = require('botkit'),
-    BeepBoop = require('beepboop-botkit'),
-    fs = require('fs'),
-    schedule = require('node-schedule'),
-    request = require('request');
+  BeepBoop = require('beepboop-botkit'),
+  fs = require('fs'),
+  schedule = require('node-schedule'),
+  request = require('request');
 
 var controller = Botkit.slackbot();
 var beepboop = BeepBoop.start(controller);
@@ -30,21 +30,27 @@ controller.on('direct_mention,mention', function(bot, message) {
 });
 
 // post the gif once a day
-var j = schedule.scheduleJob('1 1 15 * * 1-5', function() {
-  console.log('node-schedule activated');
-  request('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats', function(error, response, body) {
-    if (!error && response.statusCode == 200) {
-      // parse response and store image url
-      var catObj = JSON.parse(body);
-      var catGif = catObj.data.image_url;
+beepboop.on('botkit.rtm.started', function(bot, resource, meta) {
+  var j = schedule.scheduleJob('0 0 13 * * 1-5', function() {
+    console.log('node-schedule activated');
+    request('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats', function(error, response, body) {
+      if (!error && response.statusCode == 200) {
+        // parse response and store image url
+        var catObj = JSON.parse(body);
+        var catGif = catObj.data.image_url;
 
-      // send image to room
-      bot.sendWebhook({
-        text: "Here is your daily cat gif meow:\n" + catGif,
-        channel: '#cat-gifs'
-      });
+        bot.api.chat.postMessage({
+          channel: '#cat-gifs',
+          text: "Here is your daily cat gif meow:\n" + catGif,
+          username: 'Random Cat'
+        }, function(err, res) {
+          if (err) {
+            throw new Error('Could not postMessage to #general');
+          }
+        });
 
-      console.log("Here is your daily cat gif meow: " + catGif + "!");
-    }
+        console.log("Here is your daily cat gif meow: " + catGif + "!");
+      }
+    });
   });
 });

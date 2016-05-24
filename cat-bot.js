@@ -31,7 +31,7 @@ controller.on('direct_mention,mention', function(bot, message) {
 
 // post the gif once a day
 beepboop.on('botkit.rtm.started', function(bot, resource, meta) {
-  var j = schedule.scheduleJob('0 0 13 * * 1-5', function() {
+  var j = schedule.scheduleJob('0 0 21 * * 1-5', function() {
     console.log('node-schedule activated');
     request('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats', function(error, response, body) {
       if (!error && response.statusCode == 200) {

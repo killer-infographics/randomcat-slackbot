@@ -40,7 +40,7 @@ beepboop.on('botkit.rtm.started', function(bot, resource, meta) {
         var catGif = catObj.data.image_url;
 
         bot.api.chat.postMessage({
-          channel: '#cat-gifs',
+          channel: resource.SlackIncomingWebhookChannel,
           text: "Here is your daily cat gif meow:\n" + catGif,
           username: 'Random Cat'
         }, function(err, res) {
